@@ -12,9 +12,9 @@
 #carousel .gallery img {
     height: 100%;
     width: 100%;
+    object-fit: cover;
     border-radius: 10px;
     display: none;
-    object-fit: cover;
 }
 
 #carousel .gallery .active{
@@ -26,6 +26,7 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+
 }
 #prev{
     right: 105%;
