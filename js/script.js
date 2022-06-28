@@ -32,37 +32,47 @@ in evidenza l’immagine equivalente a quella attiva, scegliete liberamente
  diversamente rispetto alle altre o aggiungere un semplice bordo. */
 
  console.log ('JS OK')
-
- //recupero tutte le immagini dal DOM
- const images=document.querySelectorAll('#carousel img');
-
+ const images = [
+    'img/01.jpg',
+    'img/02.jpg',
+    'img/03.jpg',
+    'img/04.jpg',
+    'img/05.jpg',
+]
+ const imgList = document.getElementById('list');
  //prepariamo una variabile per "tenere d'occhio" l'immagine attiva
 let currentActiveIndex = 0;
+const imgElementList = imgList.children;
 
+for (let i = 0; i < images.length; i++){
+    const imgElement = document.createElement('img');
+    imgList.append(imgElement);
+    imgElement.classList.add('jpg');
+    imgElement.setAttribute('src', images[i]);
+}
 //imposta come prima immagine la prima
-images[currentActiveIndex].classList.add('active')
-
+imgElementList[currentActiveIndex].classList.add('active');
 //recupero i bottonni
 const prevButton = document.getElementById('prev');
 const nextButton = document.getElementById('next');
 
 //FRECCIA DESTRA
 nextButton.addEventListener('click',function(){
-images[currentActiveIndex].classList.remove ('active');
+imgElementList[currentActiveIndex].classList.remove ('active');
 currentActiveIndex++;
-    if (currentActiveIndex === images.length) {
+    if (currentActiveIndex === imgElementList.length) {
         currentActiveIndex = 0;
     }
-    images[currentActiveIndex].classList.add('active')
+    imgElementList[currentActiveIndex].classList.add('active')
 });
 //freccia sinistra
 prevButton.addEventListener('click',function(){
-images[currentActiveIndex].classList.remove ('active');
+imgElementList[currentActiveIndex].classList.remove ('active');
  currentActiveIndex--;
  if (currentActiveIndex === -1) {
     currentActiveIndex = 4;
 }
-images[currentActiveIndex].classList.add('active');
+imgElementList[currentActiveIndex].classList.add('active');
 });
     
 
